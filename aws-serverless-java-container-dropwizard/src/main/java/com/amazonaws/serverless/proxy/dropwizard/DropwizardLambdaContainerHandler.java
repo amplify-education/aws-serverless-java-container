@@ -159,7 +159,7 @@ public class DropwizardLambdaContainerHandler<RequestType, ResponseType, Dropwiz
         dropwizardEnvironment = new Environment(
                 dropwizardBootstrap.getApplication().getName(),
                 dropwizardBootstrap.getObjectMapper(),
-                dropwizardBootstrap.getValidatorFactory(),
+                dropwizardBootstrap.getValidatorFactory().getValidator(),
                 dropwizardBootstrap.getMetricRegistry(),
                 dropwizardBootstrap.getClassLoader(),
                 dropwizardBootstrap.getHealthCheckRegistry()
@@ -181,6 +181,7 @@ public class DropwizardLambdaContainerHandler<RequestType, ResponseType, Dropwiz
             }
 
             // start the bootstrap and app processes with the configuration and environment
+            dropwizardApp.initialize(dropwizardBootstrap);
             dropwizardBootstrap.run(dropwizardConfig, dropwizardEnvironment);
             dropwizardApp.run(dropwizardConfig, dropwizardEnvironment);
 

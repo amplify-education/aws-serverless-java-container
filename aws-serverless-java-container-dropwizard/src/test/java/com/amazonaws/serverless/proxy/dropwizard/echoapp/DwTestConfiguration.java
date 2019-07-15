@@ -2,13 +2,13 @@ package com.amazonaws.serverless.proxy.dropwizard.echoapp;
 
 import io.dropwizard.Configuration;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class DwTestConfiguration extends Configuration {
-    @NotEmpty
+    @NotNull
     private String template;
 
-    @NotEmpty
+    @NotNull
     private String defaultName = "Stranger";
 
     @JsonProperty
